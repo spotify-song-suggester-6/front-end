@@ -29,7 +29,7 @@ class Login extends React.Component {
       .then(res => {
         //console.log("Auth Obj:", res.data.payload);
         window.localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/protected");
+        this.props.history.push("/home");
       })
       .catch(err => console.log("We aint got dirt!", err));
   };
