@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -23,13 +24,13 @@ class Login extends React.Component {
     e.preventDefault();
     axiosWithAuth()
       .post(
-        //"http:", <-API here
+        "https://spotify-song-suggester6.herokuapp.com/api/auth/login",
         this.state.credentials
       )
       .then(res => {
-        //console.log("Auth Obj:", res.data.payload);
-        window.localStorage.setItem("token", res.data.payload);
-        this.props.history.push("/home");
+        console.log("Auth Obj:", res.data.token);
+        window.localStorage.setItem("token", res.data.token);
+        this.props.history.push("/protected");
       })
       .catch(err => console.log("We aint got dirt!", err));
   };
@@ -37,7 +38,6 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h1>Spotify Song Suggester (Symphinity)?</h1>
         <form onSubmit={this.login}>
           <input
             type="text"
@@ -53,6 +53,9 @@ class Login extends React.Component {
           />
           <button>Log in</button>
         </form>
+        <h3>
+          Don't have an account? <Link to="/signup">Sign up!</Link>{" "}
+        </h3>
       </div>
     );
   }
