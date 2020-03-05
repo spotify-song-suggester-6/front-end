@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
-
 
 const SignUpForm = ({ values, errors, touched, status }) => {
   // console.log("values", values);
@@ -15,62 +14,74 @@ const SignUpForm = ({ values, errors, touched, status }) => {
     status && setUsers(users => [...users, status]);
   }, [status]);
   return (
-    <div >
-       <div>
-            <h2>Welcome</h2>
-            <p>Hello, please go through our sign up process to set up your account!</p>
-        </div>
+    <div>
+      <div>
+        <h2>Welcome</h2>
+        <p>
+          Hello, please go through our sign up process to set up your account!
+        </p>
+      </div>
 
-        {/* Form Begins */}
-      <Form >
-      <label htmlFor="Username">
-          Username: 
-          <Field id="Username" type="text" name="Username" placeholder="Username" />
-          {touched.Username && errors.Username && (
-            <p >{errors.Username}</p>
-          )}
+      {/* Form Begins */}
+      <Form>
+        <label htmlFor="Username">
+          Username:
+          <Field
+            id="Username"
+            type="text"
+            name="Username"
+            placeholder="Username"
+          />
+          {touched.Username && errors.Username && <p>{errors.Username}</p>}
         </label>
-        <label htmlFor="Email">
-          Email: 
+        {/* <label htmlFor="Email">
+          Email:
           <Field id="Email" type="email" name="Email" placeholder="Email" />
-          {touched.Email && errors.Email && (
-            <p >{errors.Email}</p>
-          )}
-        </label>
+          {touched.Email && errors.Email && <p>{errors.Email}</p>}
+        </label> */}
         <label htmlFor="Password">
-          Password: 
-          <Field id="Password" type="password" name="Password" placeholder="Password" />
-          {touched.Password && errors.Password && (
-            <p >{errors.Password}</p>
-          )}
+          Password:
+          <Field
+            id="Password"
+            type="password"
+            name="Password"
+            placeholder="Password"
+          />
+          {touched.Password && errors.Password && <p>{errors.Password}</p>}
         </label>
-        <label htmlFor="PasswordConfirm">
-          Password Confirmation: 
-          <Field id="PasswordConfirm" type="password" name="PasswordConfirm" placeholder="Password Confirmation" />
+        {/* <label htmlFor="PasswordConfirm">
+          Password Confirmation:
+          <Field
+            id="PasswordConfirm"
+            type="password"
+            name="PasswordConfirm"
+            placeholder="Password Confirmation"
+          />
           {touched.PasswordConfirm && errors.PasswordConfirm && (
-            <p >{errors.PasswordConfirm}</p>
+            <p>{errors.PasswordConfirm}</p>
           )}
-        </label>
+        </label> */}
         <button type="submit">SignUp!</button>
       </Form>
-{/* Form Ends */}
+      {/* Form Ends */}
 
       <footer>
-          <p>have an account? 
-              <Link to="/Login">Sign In!</Link>
-          </p>
+        <p>
+          have an account?
+          <Link to="/login">Sign In!</Link>
+        </p>
       </footer>
       {/* <pre>{JSON.stringify(values, null, 2)}</pre>
       <pre>{JSON.stringify(errors, null, 2)}</pre> */}
-      {users.map(SignUp => {
+      {/* {users.map(SignUp => {
         return (
-            <ul key={SignUp.id}>
+          <ul key={SignUp.id}>
             <li>Username: {SignUp.Username}</li>
             <li>Email: {SignUp.Email}</li>
             <li>Password: {SignUp.Password}</li>
           </ul>
         );
-      })}
+      })} */}
     </div>
   );
 };
@@ -80,23 +91,26 @@ const FormikSignUpForm = withFormik({
     // set initial state of form to value from parent component OR the initial value (after || )
     return {
       Username: props.Username || "",
-      Email: props.Email || "",
-      Password: props.Password || "",
-      PasswordConfirm: props.PasswordConfirm || "",
+      // Email: props.Email || "",
+      Password: props.Password || ""
+      // PasswordConfirm: props.PasswordConfirm || ""
     };
   },
 
   // Declare shape and requirement of values object (form state )
   validationSchema: Yup.object().shape({
     Password: Yup.string().required("password is required"),
-    Username: Yup.string().required("Username is required"),
-    Email: Yup.string().required("Email is required")
+    Username: Yup.string().required("Username is required")
+    // Email: Yup.string().required("Email is required")
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {
     console.log("submitting", values);
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post(
+        "https://spotify-song-suggester6.herokuapp.com/api/auth/register",
+        values
+      )
       .then(res => {
         // console.log("success", res);
         setStatus(res.data);
@@ -104,9 +118,7 @@ const FormikSignUpForm = withFormik({
         //clears form inputs, from FormikBag
         resetForm();
       })
-      .catch(err => console.log(err.response));
+      .catch(err => console.log("This shit broke,", err.response));
   }
 })(SignUpForm);
 export default FormikSignUpForm;
-
-  
