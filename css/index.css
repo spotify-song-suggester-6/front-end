@@ -141,7 +141,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Russo One', sans-serif;
+  font-family: 'Fira Sans', sans-serif;
 }
 h2 {
   font-size: 3.2rem;
@@ -218,6 +218,10 @@ header nav a {
 }
 .bottom_content h2 {
   text-align: center;
+  padding-bottom: 3rem;
+}
+.bottom_content p {
+  text-align: center;
 }
 footer {
   display: flex;
@@ -225,4 +229,36 @@ footer {
   align-items: center;
   justify-content: space-evenly;
   height: 10rem;
+}
+.team {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.person {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: #e48a15;
+}
+.people {
+  border-radius: 2rem;
+  color: white;
+  background-color: #2e2e2e;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+  margin: 2rem;
+}
+.people img {
+  height: 13rem;
+  margin-right: 2rem;
+}
+.people a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: orange;
 }
