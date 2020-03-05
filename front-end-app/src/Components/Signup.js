@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
+import styled from "styled-components";
+
 
 
 const SignUpForm = ({ values, errors, touched, status }) => {
@@ -14,6 +16,13 @@ const SignUpForm = ({ values, errors, touched, status }) => {
     console.log("status has changed!", status);
     status && setUsers(users => [...users, status]);
   }, [status]);
+// REVISIT THIS 
+// useEffect(() => {
+//     setHomeDiv(styled.div`
+//     display:none;
+//     `)
+//   }, []);
+
   return (
     <div >
        <div>

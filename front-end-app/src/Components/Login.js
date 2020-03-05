@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios"; 
+import styled from "styled-components";
+import { useHistory } from 'react-router-dom';
+
+
+
 
 
 const LoginForm = ({ values, errors, touched, status }) => {
   // console.log("values", values);
   // console.log("errors", errors);
   // console.log("touched", touched);
+  const history = useHistory();
   const [users, setUsers] = useState([]);
   useEffect(() => {
     console.log("status has changed!", status);
     status && setUsers(users => [...users, status]);
   }, [status]);
+
+
   return (
     <div >
         <div>
@@ -22,7 +30,8 @@ const LoginForm = ({ values, errors, touched, status }) => {
         </div>
 
         {/* Form Starts */}
-      <Form >
+        {/* onSubmit={event => handleSubmit(event)} PUT THIS IS FORM FOR POST REQST */}
+      <Form onSubmit={event => history.push('/User/home')} >
         <label htmlFor="EmailUsername">
           Email/ Username: 
           <Field id="EmailUsername" type="email" name="EmailUsername" placeholder="Email/ Username" />
@@ -81,7 +90,7 @@ const FormikLoginForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     console.log("submitting", values);
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("https://spotify-song-suggester6.herokuapp.com/api/favorites", values)
       .then(res => {
         // console.log("success", res);
         setStatus(res.data);
