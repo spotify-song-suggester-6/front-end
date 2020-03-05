@@ -24,7 +24,7 @@ function Nav() {
       <Link to="/search"> Search </Link>
       {/* Might make into overlay component? */}
       <Link to="/favorites"> Favorites </Link>
-      <Link to="/about"> About </Link>
+      <a href="/public/index.html"> About </a>
       {/* Link to Jonah's about page */}
     </nav>
   );
