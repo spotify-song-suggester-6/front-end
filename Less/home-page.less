@@ -1,0 +1,117 @@
+
+// NAVBAR
+header{
+    display:flex;
+    height:8rem;
+    text-align:center;
+    justify-content: space-between;
+
+    nav{
+        font-size:20px;
+        width:100%;
+        background-color:rgb(46, 46, 46);
+        display: flex;
+        align-items:center;
+        justify-content: space-evenly;
+
+        a{
+        text-decoration:none;
+        color:@orange;
+        }
+    }
+}
+
+// Top
+.Top {
+    width:100%;
+    height:50rem;
+    
+    img{
+        width:100%;
+        Height:100%
+    }
+    .top_container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    h2 {
+        font-size:8rem;
+        padding: 1rem;
+        color:white;
+    }
+    p {
+        font-size:2rem;
+        padding: 1rem;
+    }
+    button {
+        width:22rem;
+        height:5rem;
+        margin: 1rem;
+        background-color:@bgBlack;
+        color:white;
+        border-radius: 2.5rem;
+        font-size: 2rem;
+    }
+}
+.bottom_content {
+    margin:1rem;
+    padding:2rem;
+    background-color:@bgBlack;
+    color: white;
+    border-radius: 4rem;
+
+    h2 {
+        text-align:center;
+        padding-bottom: 3rem;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+footer {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+    height:10rem;
+}
+// The About Us page specific
+.team {
+    height:10rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.person {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    background-color:@orange;
+    padding:10rem;
+}
+.people {
+    border-radius:2rem;
+    color:white;
+    background-color:@bgBlack;
+    height:15rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    padding:2rem;
+    margin:3rem;
+
+    img {
+        height:13rem;
+        margin-right:2rem;
+    }
+    
+    a {
+        .a();
+        font-size:1.5rem;
+    }
+}
