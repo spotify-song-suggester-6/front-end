@@ -19,7 +19,7 @@ function App() {
       <Router>
         <Switch>
           {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={SignUp} />
           <PrivateRoute exact path="/protected" component={HomeKey} />
           <Route path="/Home" component={HomeKey} />
           <Route path="/Login" component={Login} />
