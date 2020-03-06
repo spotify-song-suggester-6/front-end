@@ -24,30 +24,30 @@ const SignUpForm = ({ values, errors, touched, status }) => {
 
       {/* Form Begins */}
       <Form>
-        <label htmlFor="Username">
+        <label htmlFor="username">
           Username:
           <Field
-            id="Username"
+            id="username"
             type="text"
-            name="Username"
-            placeholder="Username"
+            name="username"
+            placeholder="username"
           />
-          {touched.Username && errors.Username && <p>{errors.Username}</p>}
+          {touched.username && errors.username && <p>{errors.username}</p>}
         </label>
         {/* <label htmlFor="Email">
           Email:
           <Field id="Email" type="email" name="Email" placeholder="Email" />
           {touched.Email && errors.Email && <p>{errors.Email}</p>}
         </label> */}
-        <label htmlFor="Password">
+        <label htmlFor="password">
           Password:
           <Field
-            id="Password"
+            id="password"
             type="password"
-            name="Password"
-            placeholder="Password"
+            name="password"
+            placeholder="password"
           />
-          {touched.Password && errors.Password && <p>{errors.Password}</p>}
+          {touched.password && errors.password && <p>{errors.password}</p>}
         </label>
         {/* <label htmlFor="PasswordConfirm">
           Password Confirmation:
@@ -90,17 +90,17 @@ const FormikSignUpForm = withFormik({
   mapPropsToValues(props) {
     // set initial state of form to value from parent component OR the initial value (after || )
     return {
-      Username: props.Username || "",
+      username: props.username || "",
       // Email: props.Email || "",
-      Password: props.Password || ""
+      password: props.password || ""
       // PasswordConfirm: props.PasswordConfirm || ""
     };
   },
 
   // Declare shape and requirement of values object (form state )
   validationSchema: Yup.object().shape({
-    Password: Yup.string().required("password is required"),
-    Username: Yup.string().required("Username is required")
+    password: Yup.string().required("password is required"),
+    username: Yup.string().required("username is required")
     // Email: Yup.string().required("Email is required")
   }),
 
