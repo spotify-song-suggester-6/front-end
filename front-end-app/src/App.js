@@ -6,14 +6,14 @@ import PrivateRoute from "./components/PrivateRoute";
 import HomeKey from "./components/HomeKey";
 import Login from "./components/LoginKey";
 import SignUp from "./components/Signup";
-// import Search from "./components/Search";
+import Search from "./components/Search";
 // import Favorites from "./components/Favorites";
 
 function App() {
   return (
     <div className="App">
       <div>
-        <h1>Songgetions</h1>
+        <h1>Songgestions</h1>
       </div>
 
       <Router>
@@ -23,7 +23,7 @@ function App() {
           <PrivateRoute exact path="/protected" component={HomeKey} />
           <Route path="/Home" component={HomeKey} />
           <Route path="/Login" component={Login} />
-          {/* <Route path="/Search" component={Search} /> */}
+          <Route path="/Search" component={Search} />
           {/* <Route path="/Favorites" component={Favorites} /> */}
           <Route path="/SignUp" component={SignUp} />
         </Switch>

@@ -23,7 +23,7 @@ function Nav() {
       <Link to="/home"> Home </Link>
       <Link to="/search"> Search </Link>
       {/* Might make into overlay component? */}
-      <Link to="/favorites"> Favorites </Link>
+      {/* <Link to="/favorites"> Favorites </Link> */}
       <a href="/public/index.html"> About </a>
       {/* Link to Jonah's about page */}
     </nav>
