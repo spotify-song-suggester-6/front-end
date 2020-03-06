@@ -5,18 +5,22 @@ import styled from "styled-components";
 
 
 const ScrollDivSongs = styled.div`
-width: 90%;
+width: 98%;
     overflow: auto;
     white-space: nowrap;
     display: flex;
+    margin: 0% 1%;
 `;
+
 const SongCard = styled.div`
-background: grey;
 margin: 1%;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+background-color: black;
+    color: white;
+    padding: 2%;
 `;
 
 export default function Songs() {
@@ -56,9 +60,9 @@ export default function Songs() {
   };
   return (
     <div >
-       <div><h2>DashBoard</h2></div> 
-       <div>
-      <form className="search">
+       <div className="homeDashboard">
+           <h2>DashBoard</h2>
+           <form className="search">
         <input
           type="text"
           onChange={handleInputChange}
@@ -68,8 +72,12 @@ export default function Songs() {
           className="prompt search-name"
           placeholder="Search by song title"
           autoComplete="off"
+          className="homeInput"
         />
       </form>
+           </div> 
+       <div>
+      
       <div>
           <h5>Favorites:</h5>
       </div>

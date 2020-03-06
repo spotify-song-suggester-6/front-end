@@ -27,33 +27,37 @@ const LoginForm = ({ values, errors, touched, status }) => {
 //     setUserId(`${users[0].id}`);
 //   }, [users]);
   return (
-    <div >
-        <div>
+    <div className="loginDiv" >
+        <div className="loginWelcome">
             <h2>Welcome</h2>
             <p>Hello, welcome back, please login!</p>
         </div>
 
         {/* Form Starts */}
         {/* onSubmit={event => handleSubmit(event)} PUT THIS IS FORM FOR POST REQST */}
-      <Form  >
+      <Form className="loginForm"  >
 
 
-        <label htmlFor="username">
-          Email/ Username: 
+        <label className="loginLabels" htmlFor="username">
+          Username: 
           <Field id="username" type="text" name="username" placeholder="Email/ Username" />
           {touched.username && errors.username && (
             <p >{errors.username}</p>
           )}
         </label>
-        <label htmlFor="password">
+        <label className="loginLabels" htmlFor="password">
           password: 
           <Field id="password" type="password" name="password" placeholder="password" />
           {touched.password && errors.password && (
             <p >{errors.password}</p>
           )}
         </label>
+        <div className="link_wrapper">
         <Link to="">Forgot password?</Link>
+        </div>
+        <div className="btn_wrapper" >
         <button className="loginbtn" type="submit">Login In!</button>
+        </div>
       </Form>
       {/* Form Ends */}
 

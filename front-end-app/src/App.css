@@ -44,10 +44,72 @@ body{
     transform: rotate(360deg);
   }
 }
+
+.loginDiv{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.loginWelcome{
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+}
+.loginForm{
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 70%;
+    height: 440px;
+}
+.loginLabels{
+  font-size: 1.5rem;
+    font-family: auto;
+}
+.link_wrapper{
+  display:flex;
+  justify-content: end;
+}
+.btn_wrapper{
+  display:flex;
+  justify-content: end;
+  width: 90%;
+}
 .loginbtn{
-  width: 30%;
+  width: 100%;
 font-size: 2rem;
 background: black;
 color: white;
 border-radius: 20px;
+}
+input:-internal-autofill-selected{
+  font-size: .9rem;
+    border: none;
+    border-bottom: 2px black solid;
+    background-color: black !important;
+    color: white !important;
+}
+.homeInput{
+  width: 100%;
+    border: none;
+    border-bottom: black 2px solid;
+    background-color: antiquewhite;
+    color: white;
+}
+.theFooter{
+  display: flex;
+    justify-content: space-evenly;
+}
+.homeDashboard{
+  display:flex;
+flex-direction: column;
+align-items:flex-start;
+width: 70%;
+margin: 0% 15%;
+}
+.search{
+  width: 100%;
 }
