@@ -30,7 +30,7 @@ export default function Songs() {
     //   https://spotify-song-suggester6.herokuapp.com/api/users/:id/favorites
     // https://spotify-song-suggester6.herokuapp.com/api/songs
     axios
-      .get(`https://spotify-song-suggester6.herokuapp.com/api/users/1/favorites`)
+      .get(`https://spotify-song-suggester6.herokuapp.com/api/users/4/favorites`)
       .then(response => {
         console.log(response);
         const songTitle = response.data.filter(favInfo =>
@@ -56,7 +56,6 @@ export default function Songs() {
   };
   return (
     <div >
-        <header><p>Spotifynder!</p></header>
        <div><h2>DashBoard</h2></div> 
        <div>
       <form className="search">

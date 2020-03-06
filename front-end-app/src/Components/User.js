@@ -14,10 +14,10 @@ import AppRouter from './AppRouter';
  `;
 
 
-function User() {
+function User({userId}) {
   return (
 <div>
- <AppRouter/> 
+ <AppRouter id={userId}/> 
  </div>
 
   )

@@ -74,9 +74,9 @@ const SignUpForm = ({ values, errors, touched, status }) => {
       {users.map(SignUp => {
         return (
             <ul key={SignUp.id}>
-            <li>Username: {SignUp.Username}</li>
+            <li>Set up Username: {SignUp.Username}</li>
             <li>Email: {SignUp.Email}</li>
-            <li>Password: {SignUp.Password}</li>
+            <li>Set up Password: {SignUp.Password}</li>
           </ul>
         );
       })}
@@ -105,7 +105,7 @@ const FormikSignUpForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     console.log("submitting", values);
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("https://spotify-song-suggester6.herokuapp.com/api/auth/register", values)
       .then(res => {
         // console.log("success", res);
         setStatus(res.data);

@@ -19,7 +19,8 @@ font-size: 3rem;
 
 function App() {
 const [showHeader, setShowHeader] = useState(true);
-
+const [userId, setUserId] = useState('');
+console.log("THIS IS USER_ID", userId);
   return (
     <div className="App">
       <div>
@@ -31,10 +32,10 @@ const [showHeader, setShowHeader] = useState(true);
   {showHeader ? <Header setShowHeader={setShowHeader} showHeader={showHeader} /> : <div></div> }
   <Switch>
             {/* <Route exact path="/" component={Home} /> */}
-            <Route path="/Login" render={props => <Login {...props}  />} />
+            <Route path="/Login" render={props => <Login {...props} setUserId={setUserId}  />} />
             
             <Route path="/SignUp" render={props => <SignUp {...props}  />} />
-            <Route path="/User" render={props => <User {...props}  />} />
+            <Route path="/User" render={props => <User {...props} userId={userId}  />} />
             
   </Switch>
 

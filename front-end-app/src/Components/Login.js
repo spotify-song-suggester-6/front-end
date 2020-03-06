@@ -4,24 +4,28 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios"; 
 import styled from "styled-components";
-import { useHistory } from 'react-router-dom';
 
 
 
 
 
-const LoginForm = ({ values, errors, touched, status, setShowHeader }) => {
+const LoginForm = ({ values, errors, touched, status }) => {
   // console.log("values", values);
+//   console.log("props -->", props);
   // console.log("errors", errors);
-  // console.log("touched", touched);
-  const history = useHistory();
+//   console.log("touched", touched);
+//   const [resData, setResData] = useState('');
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    console.log("status has changed!", status);
+    console.log("STATUS has changed!", status);
     status && setUsers(users => [...users, status]);
   }, [status]);
-
-
+//   const userId = users[0].id; 
+//   console.log(userId);
+//   useEffect(() => {
+//     // console.log("THIS IS USERS", users);
+//     setUserId(`${users[0].id}`);
+//   }, [users]);
   return (
     <div >
         <div>
@@ -31,26 +35,25 @@ const LoginForm = ({ values, errors, touched, status, setShowHeader }) => {
 
         {/* Form Starts */}
         {/* onSubmit={event => handleSubmit(event)} PUT THIS IS FORM FOR POST REQST */}
-      <Form onSubmit={(event) =>{ 
-        history.push('/User/home');}} >
+      <Form  >
 
 
-        <label htmlFor="EmailUsername">
+        <label htmlFor="username">
           Email/ Username: 
-          <Field id="EmailUsername" type="email" name="EmailUsername" placeholder="Email/ Username" />
-          {touched.EmailUsername && errors.EmailUsername && (
-            <p >{errors.EmailUsername}</p>
+          <Field id="username" type="text" name="username" placeholder="Email/ Username" />
+          {touched.username && errors.username && (
+            <p >{errors.username}</p>
           )}
         </label>
-        <label htmlFor="Password">
-          Password: 
-          <Field id="Password" type="password" name="Password" placeholder="Password" />
-          {touched.Password && errors.Password && (
-            <p >{errors.Password}</p>
+        <label htmlFor="password">
+          password: 
+          <Field id="password" type="password" name="password" placeholder="password" />
+          {touched.password && errors.password && (
+            <p >{errors.password}</p>
           )}
         </label>
-        <Link to="">Forgot Password?</Link>
-        <button type="submit">Login In!</button>
+        <Link to="">Forgot password?</Link>
+        <button className="loginbtn" type="submit">Login In!</button>
       </Form>
       {/* Form Ends */}
 
@@ -64,8 +67,8 @@ const LoginForm = ({ values, errors, touched, status, setShowHeader }) => {
       {users.map(login => {
         return (
           <ul key={login.id}>
-            <li>Email/ Username: {login.EmailUsername}</li>
-            <li>Password: {login.Password}</li>
+            <li>Username: {login.username}</li>
+            <li>password: {login.password}</li>
           </ul>
         );
       })}
@@ -74,32 +77,36 @@ const LoginForm = ({ values, errors, touched, status, setShowHeader }) => {
 };
 
 const FormikLoginForm = withFormik({
-  mapPropsToValues(props) {
+  mapPropsToValues({username, password}) {
     // set initial state of form to value from parent component OR the initial value (after || )
     return {
       
-      EmailUsername: props.EmailUsername || "",
-      Password: props.Password || "",
+      username: username || "",
+      password: password || ""
     };
   },
 
   // Declare shape and requirement of values object (form state )
   validationSchema: Yup.object().shape({
-    Password: Yup.string().required("password required"),
+    password: Yup.string().required("password required"),
     // passing a string in required makes a custom inline error msg
-    EmailUsername: Yup.string().required("Email/ Username is required")
+    username: Yup.string().required("Username is required")
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
     console.log("submitting", values);
+    console.log('props within axios scope', props);
     axios
-      .post("https://spotify-song-suggester6.herokuapp.com/api/favorites", values)
+      .post("https://spotify-song-suggester6.herokuapp.com/api/auth/login", values)
       .then(res => {
-        // console.log("success", res);
+        //   debugger;
+        console.log("success", res);
+        // setUserId(res.data.id);
         setStatus(res.data);
-
+        props.setUserId(res.data.id);
         //clears form inputs, from FormikBag
         resetForm();
+        props.history.push('/User/4/home');
       })
       .catch(err => console.log(err.response));
   }
