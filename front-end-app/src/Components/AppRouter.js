@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 
 import Profile from './Profile';
 import Home from './Home';
@@ -21,10 +21,10 @@ function AppRouter() {
           </Switch>
         </div>
         <footer>
-            <Link to="/User/home"><img src="https://img.icons8.com/android/24/000000/home.png" /> </Link>
-            <Link to=""><img src="https://img.icons8.com/ios-glyphs/30/000000/navigation-pane.png" /> </Link>
-            <Link to=""><img src="https://img.icons8.com/ios-glyphs/30/000000/navigation-pane.png" /> </Link>
-            <Link to="/User/profile"><img src="https://img.icons8.com/material-rounded/24/000000/cat-profile.png" /> </Link>
+            <NavLink to="/User/home"><img src="https://img.icons8.com/android/24/000000/home.png" /> </NavLink>
+            <NavLink to=""><img src="https://img.icons8.com/ios-glyphs/30/000000/navigation-pane.png" /> </NavLink>
+            <NavLink to=""><img src="https://img.icons8.com/ios-glyphs/30/000000/navigation-pane.png" /> </NavLink>
+            <NavLink to="/User/profile"><img src="https://img.icons8.com/material-rounded/24/000000/cat-profile.png" /> </NavLink>
         </footer>
 
       </Router>

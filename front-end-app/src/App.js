@@ -9,24 +9,26 @@ import SignUp from "./Components/Signup";
 import User from './Components/User';
 
 // STYLES 
-
+const AppName = styled.h1`
+font-family: cursive;
+font-size: 3rem;
+`;
 
 
 //Styles END
 
 function App() {
-
+const [showHeader, setShowHeader] = useState(true);
 
   return (
     <div className="App">
       <div>
-        <h1>Spotifynder!</h1>
+        <AppName>Spotifynder!</AppName>
       </div>
 
 
 <Router>
-<Header />
-
+  {showHeader ? <Header setShowHeader={setShowHeader} showHeader={showHeader} /> : <div></div> }
   <Switch>
             {/* <Route exact path="/" component={Home} /> */}
             <Route path="/Login" render={props => <Login {...props}  />} />

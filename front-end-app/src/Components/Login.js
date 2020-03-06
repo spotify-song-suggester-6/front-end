@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const LoginForm = ({ values, errors, touched, status }) => {
+const LoginForm = ({ values, errors, touched, status, setShowHeader }) => {
   // console.log("values", values);
   // console.log("errors", errors);
   // console.log("touched", touched);
@@ -31,7 +31,10 @@ const LoginForm = ({ values, errors, touched, status }) => {
 
         {/* Form Starts */}
         {/* onSubmit={event => handleSubmit(event)} PUT THIS IS FORM FOR POST REQST */}
-      <Form onSubmit={event => history.push('/User/home')} >
+      <Form onSubmit={(event) =>{ 
+        history.push('/User/home');}} >
+
+
         <label htmlFor="EmailUsername">
           Email/ Username: 
           <Field id="EmailUsername" type="email" name="EmailUsername" placeholder="Email/ Username" />
